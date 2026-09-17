@@ -65,7 +65,7 @@ export default function LandingPage() {
             <Link href="#" className="hover:text-[#2eb886] transition border-b-2 border-[#2eb886] pb-1">Beranda</Link>
             <Link href="#" className="hover:text-[#2eb886] transition">Tentang</Link>
             <Link href="#" className="hover:text-[#2eb886] transition">Layanan</Link>
-            <Link href="#" className="hover:text-[#2eb886] transition">Portofolio</Link>
+            {/* <Link href="#" className="hover:text-[#2eb886] transition">Portofolio</Link> */}
             <Link href="#" className="hover:text-[#2eb886] transition">Kontak</Link>
           </div>
 
