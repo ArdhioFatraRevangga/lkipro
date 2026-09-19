@@ -196,18 +196,43 @@ export default function LandingPage() {
           Beberapa hasil karya terbaik yang telah kami kerjakan.
         </p>
 
-        {/* PERUBAHAN DI SINI: Ubah grid menjadi 2 kolom dan tambahkan max-w-4xl mx-auto */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {["Instagram", "Tiktok"].map((item, idx) => (
-            <div key={idx} className="relative h-64 md:h-80 rounded-lg overflow-hidden group cursor-pointer bg-gray-400">
-              {/* Gambar Portofolio (bisa kamu tambahkan tag <Image> di sini nantinya) */}
+          {[
+            { 
+              title: "Instagram", 
+              link: "https://www.instagram.com/lki.production?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==", // Ganti dengan link IG asli
+              image: "/assets/profile-ig.png" // Sesuaikan dengan nama foto kamu
+            },
+            { 
+              title: "Tiktok", 
+              link: "https://www.tiktok.com/@lki.production?is_from_webapp=1&sender_device=pc", // Ganti dengan link TikTok asli
+              image: "/assets/profile-tiktok.png" // Sesuaikan dengan nama foto kamu
+            }
+          ].map((item, idx) => (
+            <a 
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={idx} 
+              className="relative h-40 md:h-48 rounded-lg overflow-hidden group cursor-pointer block bg-gray-900"
+            >
+              {/* Gambar Background Kotak */}
+              <Image 
+                src={item.image} 
+                alt={item.title} 
+                fill 
+                className="object-cover transition-transform duration-500 group-hover:scale-105" 
+              />
               
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-white">
-                <span className="font-bold text-left text-lg md:text-xl">{item}</span>
+              {/* Overlay gelap agar teks putih tetap terbaca */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
+              
+              {/* Teks dan Panah */}
+              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-white z-20">
+                <span className="font-bold text-left text-lg md:text-xl">{item.title}</span>
                 <ArrowRight size={20} className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" />
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </section>
@@ -234,9 +259,9 @@ export default function LandingPage() {
             <ArrowRight size={18} className="ml-1" />
           </button>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mt-2 opacity-80 text-sm">
-            <span className="flex items-center justify-center gap-2">
+            {/* <span className="flex items-center justify-center gap-2">
               <Mail size={16}/> hello@lkiproduction.com
-            </span>
+            </span> 
             <span className="flex items-center justify-center gap-2">
               <Image 
                 src="/assets/ig-putih.png" 
@@ -246,7 +271,7 @@ export default function LandingPage() {
                 className="object-contain" 
               /> 
               @lkiproduction
-            </span>
+            </span> */}
           </div>
         </div>
 
