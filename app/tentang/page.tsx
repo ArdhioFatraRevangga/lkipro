@@ -26,13 +26,15 @@ export default function TentangPage() {
           </Link>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <Link href="/" className="hover:text-[#2eb886] transition">Beranda</Link>
-            <Link href="/tentang" className="hover:text-[#2eb886] transition border-b-2 border-[#2eb886] pb-1">Tentang</Link>
-            {/* <Link href="#" className="hover:text-[#2eb886] transition">Layanan</Link>
-            <Link href="#" className="hover:text-[#2eb886] transition">Portofolio</Link>
-            <Link href="#" className="hover:text-[#2eb886] transition">Kontak</Link> */}
-          </div>
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          <Link href="/" className="hover:text-[#2eb886] transition">Beranda</Link>
+          
+          {/* Garis bawah penanda aktif ada di menu Tentang */}
+          <Link href="/tentang" className="hover:text-[#2eb886] transition border-b-2 border-[#2eb886] pb-1">Tentang</Link>
+          
+          {/* Pastikan href="/armada" tertulis dengan benar */}
+          <Link href="/armada" className="hover:text-[#2eb886] transition">Armada</Link>
+        </div>
 
           <button 
             className="md:hidden text-white z-50"
@@ -44,12 +46,10 @@ export default function TentangPage() {
 
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-0 left-0 w-full bg-gray-900/95 backdrop-blur-sm px-6 py-24 flex flex-col gap-6 text-center shadow-lg">
+          <div className="md:hidden absolute top-0 left-0 w-full bg-gray-900/95 backdrop-blur-sm px-6 py-24 flex flex-col gap-6 text-center shadow-lg z-40">
             <Link href="/" className="text-lg font-medium hover:text-[#2eb886]">Beranda</Link>
             <Link href="/tentang" className="text-lg font-medium text-[#2eb886]">Tentang</Link>
-            {/* <Link href="#" className="text-lg font-medium hover:text-[#2eb886]">Layanan</Link>
-            <Link href="#" className="text-lg font-medium hover:text-[#2eb886]">Portofolio</Link>
-            <Link href="#" className="text-lg font-medium hover:text-[#2eb886]">Kontak</Link> */}
+            <Link href="/armada" className="text-lg font-medium hover:text-[#2eb886]">Armada</Link>
           </div>
         )}
       </nav>
