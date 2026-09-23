@@ -112,7 +112,14 @@ export default function LandingPage() {
           <p className="text-gray-300 text-base md:text-lg mb-6 md:mb-8 max-w-lg leading-relaxed">
             LKI Production adalah partner kreatif Anda dalam menghadirkan visual yang berdampak, dari konsep hingga produksi.
           </p>
-          <button className="bg-[#2eb886] hover:bg-[#24966d] text-white px-6 py-3 rounded-full font-medium flex items-center gap-3 transition w-fit">
+
+          {/* Tombol WhatsApp (Hero) */}
+          <a 
+            href="https://wa.me/62812233777?text=Halo%20LKI%20Production,%20saya%20ingin%20tanya-tanya%20seputar%20LKI%20Production." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-[#2eb886] hover:bg-[#24966d] text-white px-6 py-3 rounded-full font-medium flex items-center gap-3 transition w-fit cursor-pointer"
+          >
             <Image
               src="/assets/wa-putih.png"
               alt="WhatsApp Logo"
@@ -122,7 +129,7 @@ export default function LandingPage() {
             />
             Hubungi Kami
             <ArrowRight size={18} className="ml-1" />
-          </button>
+          </a>
         </div>
       </section>
 
@@ -250,7 +257,14 @@ export default function LandingPage() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center md:items-end gap-4">
-          <button className="bg-[#2eb886] hover:bg-[#24966d] text-white px-8 py-3 rounded-full font-medium flex items-center gap-3 transition">
+
+          {/* Tombol WhatsApp (CTA) */}
+          <a 
+            href="https://wa.me/62812233777?text=Halo%20LKI%20Production,%20saya%20tertarik%20untuk%20meyewa%20LKI%20Production." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-[#2eb886] hover:bg-[#24966d] text-white px-8 py-3 rounded-full font-medium flex items-center gap-3 transition cursor-pointer"
+          >
             <Image
               src="/assets/wa-putih.png"
               alt="WhatsApp Logo"
@@ -260,7 +274,7 @@ export default function LandingPage() {
             />
             Hubungi Kami
             <ArrowRight size={18} className="ml-1" />
-          </button>
+          </a>
         </div>
 
         <div className="absolute right-[-10%] top-[-20%] md:top-[-50%] text-[150px] md:text-[300px] font-black text-white/5 select-none pointer-events-none">

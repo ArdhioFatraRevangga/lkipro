@@ -33,46 +33,75 @@ export default function ArmadaPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50 font-sans text-gray-900 overflow-x-hidden">
+    <main className="relative min-h-screen bg-white font-sans text-gray-900">
       
-      {/* NAVBAR */}
-      <nav className="absolute top-0 w-full z-50 px-6 md:px-16 py-6 text-white bg-gradient-to-b from-black/90 to-transparent">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <Image 
-              src="/assets/LOGO LKI PRO FORMAL-02.png" 
-              alt="LKI Production Logo" 
-              width={220} 
-              height={50} 
-              className="w-40 md:w-56 h-auto object-contain"
-              priority
-            />
-          </Link>
-          
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <Link href="/" className="hover:text-[#2eb886] transition">Beranda</Link>
-            <Link href="/tentang" className="hover:text-[#2eb886] transition">Tentang</Link>
-            {/* <Link href="/#layanan" className="hover:text-[#2eb886] transition">Layanan</Link> */}
-            <Link href="/armada" className="hover:text-[#2eb886] transition border-b-2 border-[#2eb886] pb-1">Armada</Link>
-          </div>
-
-          <button 
-            className="md:hidden text-white z-50"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-0 left-0 w-full h-screen bg-[#0a1712]/95 backdrop-blur-md px-6 py-24 flex flex-col gap-8 text-center shadow-lg z-40">
-            <Link href="/" className="text-xl font-medium hover:text-[#2eb886]">Beranda</Link>
-            <Link href="/tentang" className="text-xl font-medium hover:text-[#2eb886]">Tentang</Link>
-            <Link href="/#layanan" className="text-xl font-medium hover:text-[#2eb886]">Layanan</Link>
-            <Link href="/armada" className="text-xl font-medium text-[#2eb886]">Armada</Link>
-          </div>
+      {/* ====================================================== */}
+      {/* 1. TOMBOL HAMBURGER JALUR VIP */}
+      {/* ====================================================== */}
+      <button 
+        type="button"
+        onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+        className="md:hidden fixed top-6 right-6 w-12 h-12 bg-black/30 border border-white/20 rounded-lg flex items-center justify-center z-[999999] cursor-pointer touch-manipulation shadow-lg"
+      >
+        {isMobileMenuOpen ? (
+          <X size={32} className="text-white pointer-events-none" />
+        ) : (
+          <Menu size={32} className="text-white pointer-events-none" />
         )}
+      </button>
+
+      {/* ====================================================== */}
+      {/* 2. MENU DROPDOWN KOTAK ABU-ABU */}
+      {/* ====================================================== */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed top-[85px] right-6 w-[140px] bg-[#757575] flex flex-col z-[999999] shadow-2xl rounded border border-white/20">
+          <Link 
+            href="/" 
+            className="py-3 text-center text-white text-base font-semibold border-b border-white/50 hover:bg-gray-500 transition-colors"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Beranda
+          </Link>
+          <Link 
+            href="/tentang" 
+            className="py-3 text-center text-white text-base font-semibold border-b border-white/50 hover:bg-gray-500 transition-colors"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Tentang
+          </Link>
+          <Link 
+            href="/armada" 
+            className="py-3 text-center text-white text-base font-semibold hover:bg-gray-500 transition-colors"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Armada
+          </Link>
+        </div>
+      )}
+
+      {/* ====================================================== */}
+      {/* 3. NAVBAR UTAMA */}
+      {/* ====================================================== */}
+      <nav className="absolute top-0 left-0 w-full z-[100] px-6 md:px-16 py-6 text-white bg-gradient-to-b from-black/80 to-transparent flex items-center justify-between pointer-events-none">
+        
+        <Link href="/" className="flex items-center pointer-events-auto">
+          <Image 
+            src="/assets/LOGO LKI PRO FORMAL-02.png" 
+            alt="LKI Production Logo" 
+            width={220} 
+            height={50} 
+            className="w-40 md:w-56 h-auto object-contain"
+            priority
+          />
+        </Link>
+        
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium pointer-events-auto">
+          <Link href="/" className="hover:text-[#2eb886] transition">Beranda</Link>
+          <Link href="/tentang" className="hover:text-[#2eb886] transition">Tentang</Link>
+          {/* Menu aktif diberi garis bawah */}
+          <Link href="/armada" className="hover:text-[#2eb886] transition border-b-2 border-[#2eb886] pb-1">Armada</Link>
+        </div>
+        
       </nav>
 
       {/* HEADER ARMADA */}
@@ -80,7 +109,7 @@ export default function ArmadaPage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a1712] to-black opacity-80" />
         </div>
-        <div className="relative z-20 text-white max-w-3xl mx-auto">
+        <div className="relative z-20 text-white max-w-3xl mx-auto mt-4">
           <Truck className="w-16 h-16 text-[#2eb886] mx-auto mb-6" strokeWidth={1.5} />
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
             Armada & Fasilitas <span className="text-[#2eb886]">Milik Sendiri</span>
