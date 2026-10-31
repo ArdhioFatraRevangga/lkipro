@@ -19,46 +19,46 @@ export default function LandingPage() {
   return (
     <main className="relative min-h-screen bg-white font-sans text-gray-900">
 
-      {/* ====================================================== */}
-      {/* 1. TOMBOL HAMBURGER JALUR VIP (Bebas dari halangan apa pun) */}
+{/* ====================================================== */}
+      {/* 1. TOMBOL HAMBURGER VIP (Desain Bulat Elegan) */}
       {/* ====================================================== */}
       <button 
         type="button"
         onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        className="sm:hidden fixed top-6 right-6 w-12 h-12 bg-black/30 border border-white/20 rounded-lg flex items-center justify-center z-[999999] cursor-pointer touch-manipulation shadow-lg"
+        className="sm:hidden fixed top-6 right-6 w-12 h-12 bg-black/40 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-center z-[999999] cursor-pointer touch-manipulation shadow-lg transition-all hover:bg-black/60"
       >
         {isMobileMenuOpen ? (
-          <X size={32} className="text-white pointer-events-none" />
+          <X size={26} className="text-white pointer-events-none" />
         ) : (
-          <Menu size={32} className="text-white pointer-events-none" />
+          <Menu size={26} className="text-white pointer-events-none" />
         )}
       </button>
 
       {/* ====================================================== */}
-      {/* 2. MENU DROPDOWN KOTAK ABU-ABU */}
+      {/* 2. MENU DROPDOWN (Desain Glassmorphism Modern) */}
       {/* ====================================================== */}
       {isMobileMenuOpen && (
-        <div className="sm:hidden fixed top-[85px] right-6 w-[140px] bg-[#757575] flex flex-col z-[999999] shadow-2xl rounded border border-white/20">
+        <div className="sm:hidden fixed top-[85px] right-6 w-[180px] bg-black/70 backdrop-blur-lg flex flex-col z-[999999] shadow-2xl rounded-2xl border border-white/10 overflow-hidden py-2 animate-in fade-in duration-200">
           <Link 
             href="/" 
-            className="py-3 text-center text-white text-base font-semibold border-b border-white/50 hover:bg-gray-500 transition-colors"
+            className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Beranda
           </Link>
           <Link 
             href="/tentang" 
-            className="py-3 text-center text-white text-base font-semibold border-b border-white/50 hover:bg-gray-500 transition-colors"
+            className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Tentang
           </Link>
           <Link 
             href="/armada" 
-            className="py-3 text-center text-white text-base font-semibold hover:bg-gray-500 transition-colors"
+            className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Armada
+            Layanan
           </Link>
         </div>
       )}
@@ -68,29 +68,29 @@ export default function LandingPage() {
       {/* ====================================================== */}
       {/* Perhatikan pointer-events-none agar background hitamnya tidak menelan klik! */}
       <nav className="absolute top-0 left-0 w-full z-[100] px-6 md:px-16 py-6 text-white bg-gradient-to-b from-black/80 to-transparent flex items-center justify-between pointer-events-none">
-        
+
         {/* Logo (Bisa di-klik lagi dengan pointer-events-auto) */}
         <Link href="/" className="flex items-center pointer-events-auto">
-          <Image 
-            src="/assets/LOGO LKI PRO FORMAL-02.png" 
-            alt="LKI Production Logo" 
-            width={220} 
-            height={50} 
+          <Image
+            src="/assets/LOGO LKI PRO FORMAL-02.png"
+            alt="LKI Production Logo"
+            width={220}
+            height={50}
             className="w-40 md:w-56 h-auto object-contain"
             priority
           />
         </Link>
-        
+
         {/* Desktop Menu */}
         <div className="hidden sm:flex items-center gap-8 text-sm font-medium pointer-events-auto">
           <Link href="/" className="hover:text-[#2eb886] transition border-b-2 border-[#2eb886] pb-1">Beranda</Link>
           <Link href="/tentang" className="hover:text-[#2eb886] transition">Tentang</Link>
-          <Link href="/armada" className="hover:text-[#2eb886] transition">Armada</Link>
+          <Link href="/armada" className="hover:text-[#2eb886] transition">Layanan</Link>
         </div>
-        
+
       </nav>
 
-      
+
       {/* HERO SECTION */}
       <section className="relative h-[90vh] md:h-screen min-h-[500px] flex items-center px-6 md:px-16">
         <div className="absolute inset-0 z-0 pointer-events-none">
@@ -114,9 +114,9 @@ export default function LandingPage() {
           </p>
 
           {/* Tombol WhatsApp (Hero) */}
-          <a 
-            href="https://wa.me/62812233777?text=Halo%20LKI%20Production,%20saya%20ingin%20tanya-tanya%20seputar%20LKI%20Production." 
-            target="_blank" 
+          <a
+            href="https://wa.me/62812233777?text=Halo%20LKI%20Production,%20saya%20ingin%20tanya-tanya%20seputar%20LKI%20Production."
+            target="_blank"
             rel="noopener noreferrer"
             className="bg-[#2eb886] hover:bg-[#24966d] text-white px-6 py-3 rounded-full font-medium flex items-center gap-3 transition w-fit cursor-pointer"
           >
@@ -133,7 +133,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-     {/* LAYANAN KAMI */}
+      {/* LAYANAN KAMI */}
       <section className="py-16 md:py-24 px-6 md:px-16 text-center">
         <p className="text-[#2eb886] font-semibold tracking-widest text-xs md:text-sm mb-2 md:mb-4">LAYANAN KAMI</p>
         <h2 className="text-2xl md:text-4xl font-bold mb-4">
@@ -146,13 +146,13 @@ export default function LandingPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8 max-w-6xl mx-auto">
           {[
             { icon: Speaker, title: "Sound System", desc: "Sound untuk carnival, konser, dll" },
-            { icon: Play, title: "Content Result", desc: "Konten kreatif untuk brand dan media sosial." },
+            { icon: Play, title: "Video Tron", desc: "Siap sebagai layar acara kamu." },
             { icon: Zap, title: "Lightning", desc: "Lightning yang berbagai macam" },
-            { 
-              icon: Truck, 
-              title: "Armada", 
-              desc: "Apa aja sih yang dimiliki LKI? Klik disini untuk mengetahui Fasilitas dan armada milik sendiri yang siap didatangkan ke lokasi acara Anda.",
-              link: "/armada" 
+            {
+              icon: Truck,
+              title: "Layanan",
+              desc: "Apa aja sih yang dimiliki LKI? Klik disini untuk mengetahui Fasilitas milik sendiri yang siap didatangkan ke lokasi acara Anda.",
+              link: "/armada"
             },
           ].map((service, idx) => {
             if (service.link) {
@@ -194,12 +194,51 @@ export default function LandingPage() {
           </button>
         </div>
         <div className="w-full md:w-1/2 h-[250px] md:h-[400px] relative rounded-xl overflow-hidden mt-8 md:mt-0">
-           <Image 
-             src="/assets/gudang.png" 
-             alt="Fasilitas LKI Production" 
-             fill 
-             className="object-cover" 
-           />
+          <Image
+            src="/assets/gudang.png"
+            alt="Fasilitas LKI Production"
+            fill
+            className="object-cover"
+          />
+        </div>
+      </section>
+
+      {/* ====================================================== */}
+      {/* GOOGLE MAPS / LOKASI KAMI */}
+      {/* ====================================================== */}
+      <section className="py-16 md:py-24 px-6 md:px-16 bg-white flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16 max-w-7xl mx-auto">
+        
+        {/* Bagian Kiri: Teks & Deskripsi */}
+        <div className="w-full md:w-1/2 text-center md:text-left">
+          <p className="text-[#2eb886] font-semibold tracking-widest text-xs md:text-sm mb-2 md:mb-4">LOKASI KAMI</p>
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 leading-snug">Kunjungi Gudang Kami</h2>
+          <p className="text-gray-500 text-sm md:text-base mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
+            Silakan datang langsung ke lokasi kami di Jl. Sebeng No.1945, Jugo, Kesamben, Blitar untuk melihat peralatan dan berkonsultasi mengenai event Anda. Kami selalu siap menyambut kedatangan Anda!
+          </p>
+          
+          {/* Tambahan Tombol Arahkan ke Aplikasi G-Maps */}
+          <a 
+            href="https://maps.app.goo.gl/UBaekkn2udkQJT3N6?g_st=ic" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-block bg-[#2eb886] hover:bg-[#24966d] text-white px-8 py-3 rounded-full font-medium transition cursor-pointer"
+          >
+            Buka di Google Maps
+          </a>
+        </div>
+
+        {/* Bagian Kanan: Container Map */}
+        <div className="w-full md:w-1/2 h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50 relative">
+          <iframe 
+            src="https://maps.google.com/maps?q=LKI%20PRODUCTION,%20Jl.%20Sebeng%20No.1945,%20Jugo,%20Kesamben,%20Blitar&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0 }} 
+            allowFullScreen={true} 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+            className="absolute top-0 left-0 w-full h-full"
+          ></iframe>
         </div>
       </section>
 
@@ -208,42 +247,65 @@ export default function LandingPage() {
         <p className="text-[#2eb886] font-semibold tracking-widest text-xs md:text-sm mb-2 md:mb-4">SOSIALMEDIA</p>
         <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Karya Kami</h2>
         <p className="text-gray-500 text-sm md:text-base mb-10 md:mb-12">
-          Beberapa hasil karya terbaik yang telah kami kerjakan.
+            Kenali kami dan lihat karya kami.
         </p>
 
+        {/* 
+          Grid Utama: 1 kolom di HP, 2 kolom di layar yang lebih besar.
+          Karena jumlah item = 3, item ke-3 (YouTube) akan otomatis ditangani
+          oleh ternary operator di bawah.
+        */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {[
-            { 
-              title: "Instagram", 
+            {
+              title: "Instagram",
               link: "https://www.instagram.com/lki.production?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==",
               image: "/assets/profile-ig.png"
             },
-            { 
-              title: "Tiktok", 
+            {
+              title: "Tiktok",
               link: "https://www.tiktok.com/@lki.production?is_from_webapp=1&sender_device=pc",
               image: "/assets/profile-tiktok.png"
+            },
+            {
+              title: "Youtube",
+              link: "https://www.youtube.com/@LKIProduction",
+              image: "/assets/profile-youtube.png"
             }
-          ].map((item, idx) => (
-            <a 
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={idx} 
-              className="relative h-40 md:h-48 rounded-lg overflow-hidden group cursor-pointer block bg-gray-900"
-            >
-              <Image 
-                src={item.image} 
-                alt={item.title} 
-                fill 
-                className="object-cover transition-transform duration-500 group-hover:scale-105" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
-              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-white z-20">
-                <span className="font-bold text-left text-lg md:text-xl">{item.title}</span>
-                <ArrowRight size={20} className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" />
+          ].map((item, idx, array) => {
+            // Logika untuk menengahkan item ke-3 (YouTube)
+            // Jika ini item terakhir (idx === 2) dan total item ganjil (3)
+            const isLastOddItem = idx === array.length - 1 && array.length % 2 !== 0;
+
+            return (
+              <div
+                key={idx}
+                // Jika isLastOddItem true, kotak akan mengambil 2 kolom (col-span-2) 
+                // lalu diatur lebarnya 50% dari kontainer (w-1/2) dan digeser ke tengah (mx-auto).
+                // Di layar kecil (sm), tetap full width 100%.
+                className={isLastOddItem ? "sm:col-span-2 sm:w-[calc(50%-1rem)] sm:mx-auto w-full" : "w-full"}
+              >
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative h-40 md:h-48 rounded-lg overflow-hidden group cursor-pointer block bg-gray-900 w-full"
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
+                  <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-white z-20">
+                    <span className="font-bold text-left text-lg md:text-xl">{item.title}</span>
+                    <ArrowRight size={20} className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </a>
               </div>
-            </a>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -259,9 +321,9 @@ export default function LandingPage() {
         <div className="relative z-10 flex flex-col items-center md:items-end gap-4">
 
           {/* Tombol WhatsApp (CTA) */}
-          <a 
-            href="https://wa.me/62812233777?text=Halo%20LKI%20Production,%20saya%20tertarik%20untuk%20meyewa%20LKI%20Production." 
-            target="_blank" 
+          <a
+            href="https://wa.me/62812233777?text=Halo%20LKI%20Production,%20saya%20tertarik%20untuk%20meyewa%20LKI%20Production."
+            target="_blank"
             rel="noopener noreferrer"
             className="bg-[#2eb886] hover:bg-[#24966d] text-white px-8 py-3 rounded-full font-medium flex items-center gap-3 transition cursor-pointer"
           >
@@ -286,12 +348,12 @@ export default function LandingPage() {
       <footer className="bg-[#111] text-gray-400 py-8 px-6 md:px-16 flex flex-col md:flex-row items-center justify-between border-t border-white/10 text-center md:text-left">
         <div className="mb-4 md:mb-0">
           <Link href="/" className="inline-block">
-            <Image 
-              src="/assets/LOGO LKI PRO FORMAL-02.png" 
-              alt="LKI Production Logo" 
-              width={200} 
-              height={45} 
-              className="w-36 md:w-48 h-auto object-contain" 
+            <Image
+              src="/assets/LOGO LKI PRO FORMAL-02.png"
+              alt="LKI Production Logo"
+              width={200}
+              height={45}
+              className="w-36 md:w-48 h-auto object-contain"
             />
           </Link>
         </div>
@@ -299,9 +361,35 @@ export default function LandingPage() {
           © 2026 LKI Production. All rights reserved.
         </div>
         <div className="flex items-center justify-center gap-5">
-          <Image src="/assets/ig-putih.png" alt="Instagram" width={20} height={20} className="object-contain hover:opacity-75 cursor-pointer transition" />
-          <Image src="/assets/youtube-putih.png" alt="YouTube" width={20} height={20} className="object-contain hover:opacity-75 cursor-pointer transition" />
-          <Image src="/assets/tiktok-putih.png" alt="TikTok" width={20} height={20} className="object-contain hover:opacity-75 cursor-pointer transition" />
+          {/* Link Instagram */}
+          <a
+            href="https://www.instagram.com/lki.production?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:opacity-75 transition"
+          >
+            <Image src="/assets/ig-putih.png" alt="Instagram" width={20} height={20} className="object-contain" />
+          </a>
+
+          {/* Link YouTube */}
+          <a
+            href="https://www.youtube.com/@LKIProduction"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:opacity-75 transition"
+          >
+            <Image src="/assets/youtube-putih.png" alt="YouTube" width={20} height={20} className="object-contain" />
+          </a>
+
+          {/* Link TikTok */}
+          <a
+            href="https://www.tiktok.com/@lki.production?is_from_webapp=1&sender_device=pc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:opacity-75 transition"
+          >
+            <Image src="/assets/tiktok-putih.png" alt="TikTok" width={20} height={20} className="object-contain" />
+          </a>
         </div>
       </footer>
     </main>
