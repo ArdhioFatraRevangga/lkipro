@@ -1,89 +1,95 @@
 "use client";
 
+import { notFound } from "next/navigation";
+import { armadaDetails } from "../../data/armada"; // Alamat folder sudah diperbaiki
 import Image from "next/image";
-import { useState } from "react"; 
-import { Menu, X, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { notFound, useParams } from "next/navigation";
+import { useState, use } from "react"; // Tambahkan 'use' dari react
+import { ArrowLeft } from "lucide-react";
 
-// Mengambil data dari Database Pusat
-import { armadaDetails } from "@/app/data/armada";
+export default function CatalogPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  // 1. Buka Promise params menggunakan fitur React.use() (Solusi Next.js 15)
+  const resolvedParams = use(params);
+  const slug = decodeURIComponent(resolvedParams.slug);
 
-export default function DetailArmadaPage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const params = useParams();
-  const slug = params.slug as string;
+  // 2. Ambil data dari armada.ts
   const armada = armadaDetails[slug];
-
   if (!armada) notFound();
 
+  // 3. State untuk menyimpan kategori yang sedang diklik
+  const [activeCategory, setActiveCategory] = useState<string>("Semua");
+
+  // 4. Mengambil daftar kategori unik dari data (Inilah variabel yang tadi dibilang 'not defined')
+  const categories = ["Semua", ...Array.from(new Set(armada.gallery.map(item => item.category).filter(Boolean)))];
+
+  // 5. Memfilter barang yang tampil
+  const filteredGallery = activeCategory === "Semua" 
+    ? armada.gallery 
+    : armada.gallery.filter(item => item.category === activeCategory);
+
   return (
-    <main className="relative min-h-screen bg-white font-sans text-gray-900 pb-20">
+    <main className="min-h-screen bg-gray-50 pt-24 pb-16 px-6 md:px-16 font-sans">
       
-      {/* NAVBAR JALUR VIP */}
-      <button type="button" onClick={() => setIsMobileMenuOpen((prev) => !prev)} className="md:hidden fixed top-6 right-6 w-12 h-12 bg-black/30 border border-white/20 rounded-lg flex items-center justify-center z-[99999] cursor-pointer shadow-lg">
-        {isMobileMenuOpen ? <X size={32} className="text-white pointer-events-none" /> : <Menu size={32} className="text-white pointer-events-none" />}
-      </button>
-
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed top-[85px] right-6 w-[140px] bg-[#757575] flex flex-col z-[99999] shadow-2xl rounded border border-white/20">
-          <Link href="/" className="py-3 text-center text-white text-base font-semibold border-b border-white/50 hover:bg-gray-500 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Beranda</Link>
-          <Link href="/tentang" className="py-3 text-center text-white text-base font-semibold border-b border-white/50 hover:bg-gray-500 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Tentang</Link>
-          <Link href="/armada" className="py-3 text-center text-white text-base font-semibold hover:bg-gray-500 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Layanan</Link>
-        </div>
-      )}
-
-      <nav className="absolute top-0 left-0 w-full z-[100] px-6 md:px-16 py-6 text-white bg-gradient-to-b from-black/80 to-transparent flex items-center justify-between pointer-events-none">
-        <Link href="/" className="flex items-center pointer-events-auto">
-          <Image src="/assets/LOGO LKI PRO FORMAL-02.png" alt="LKI Production Logo" width={220} height={50} className="w-40 md:w-56 h-auto object-contain" priority />
+      {/* HEADER KATALOG */}
+      <div className="max-w-7xl mx-auto mb-10">
+        <Link href="/armada" className="inline-flex items-center text-gray-500 hover:text-[#2eb886] transition-colors mb-8">
+          <ArrowLeft size={20} className="mr-2" />
+          Kembali ke Katalog
         </Link>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium pointer-events-auto">
-          <Link href="/" className="hover:text-[#2eb886] transition">Beranda</Link>
-          <Link href="/tentang" className="hover:text-[#2eb886] transition">Tentang</Link>
-          <Link href="/armada" className="hover:text-[#2eb886] transition border-b-2 border-[#2eb886] pb-1">Layanan</Link>
-        </div>
-      </nav>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">{armada.name}</h1>
+        <p className="text-gray-600 text-lg">{armada.desc}</p>
+      </div>
 
-      <section className="relative pt-32 pb-12 px-6 md:px-16 text-center bg-black">
-        <div className="relative z-20 text-white max-w-3xl mx-auto mt-4">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">{armada.name}</h1>
-          <p className="text-gray-300 text-base">{armada.desc}</p>
-        </div>
-      </section>
+      <div className="max-w-7xl mx-auto">
+        
+        {/* TOMBOL FILTER KATEGORI */}
+        {categories.length > 1 && (
+          <div className="flex overflow-x-auto gap-3 pb-4 mb-8 scrollbar-hide">
+            {categories.map((cat, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveCategory(cat as string)}
+                className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeCategory === cat 
+                    ? "bg-[#2eb886] text-white shadow-md" 
+                    : "bg-white text-gray-600 border border-gray-200 hover:border-[#2eb886] hover:text-[#2eb886]"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        )}
 
-      <section className="pt-8 pb-16 md:py-16 px-6 md:px-16 max-w-[1200px] mx-auto">
-        <Link href="/armada" className="inline-flex items-center gap-2 text-gray-500 hover:text-black transition-colors mb-8 font-medium">
-          <ArrowLeft size={20} />
-          <span>Kembali ke Katalog</span>
-        </Link>
-
-       {/* GRID 3 KOLOM (Menyesuaikan dengan gambar referensi agar kotak lebih kecil) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-12">
-          {armada.gallery.map((item, index) => (
+        {/* GRID BARANG (Sudah difilter) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8 mb-12">
+          {filteredGallery.map((item, index) => (
             <Link 
               href={`/armada/${slug}/${item.id}`}
               key={index} 
               className="flex flex-col w-full bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group cursor-pointer"
             >
-              {/* Bagian Atas: Gambar dengan padding yang menyesuaikan kotak yang lebih kecil */}
               <div className="w-full aspect-square relative overflow-hidden bg-white border-b border-gray-50 flex items-center justify-center">
                 <Image 
                   src={item.img} 
                   alt={item.title} 
                   fill 
-                  className="object-contain p-6 group-hover:scale-105 transition-transform duration-500" 
+                  className="object-contain p-3 md:p-6 group-hover:scale-105 transition-transform duration-500" 
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="bg-white text-black px-4 py-2 rounded-full font-semibold text-xs shadow-lg">Lihat Spesifikasi</span>
+                  <span className="bg-white text-black px-3 py-1.5 md:px-4 md:py-2 rounded-full font-semibold text-[10px] md:text-xs shadow-lg">Lihat Spesifikasi</span>
                 </div>
               </div>
 
-              {/* Bagian Bawah: Teks Judul */}
-              <div className="p-4 md:p-5 text-center flex flex-col justify-center flex-grow bg-gray-50/50">
-                <h3 className="text-base md:text-lg font-bold text-gray-900 group-hover:text-[#2eb886] transition-colors leading-tight">
+              <div className="p-3 md:p-5 text-center flex flex-col justify-center flex-grow bg-gray-50/50">
+                <h3 className="text-xs md:text-lg font-bold text-gray-900 group-hover:text-[#2eb886] transition-colors leading-tight line-clamp-2">
                   {item.title}
                 </h3>
-                <p className="text-xs md:text-sm text-gray-500 mt-2">
+                <p className="hidden md:block text-sm text-gray-500 mt-2">
                   Klik untuk melihat detail teknis
                 </p>
               </div>
@@ -91,14 +97,14 @@ export default function DetailArmadaPage() {
           ))}
         </div>
 
-        {/* DESKRIPSI DI BAWAH GRID FOTO */}
-        <div className="text-center max-w-2xl mx-auto px-4 mt-8 md:mt-12">
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-            Seluruh peralatan LKI Production dirawat secara berkala oleh teknisi profesional kami untuk memastikan performa maksimal dan keamanan tanpa kompromi di setiap acara Anda.
-          </p>
-        </div>
-      </section>
+        {/* Pesan jika kategori kosong */}
+        {filteredGallery.length === 0 && (
+          <div className="text-center py-20 text-gray-500">
+            Belum ada peralatan di kategori ini.
+          </div>
+        )}
 
+      </div>
     </main>
   );
 }
