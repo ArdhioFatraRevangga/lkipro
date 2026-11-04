@@ -19,10 +19,10 @@ export default function LandingPage() {
   return (
     <main className="relative min-h-screen bg-white font-sans text-gray-900">
 
-{/* ====================================================== */}
+      {/* ====================================================== */}
       {/* 1. TOMBOL HAMBURGER VIP (Desain Bulat Elegan) */}
       {/* ====================================================== */}
-      <button 
+      <button
         type="button"
         onClick={() => setIsMobileMenuOpen((prev) => !prev)}
         className="sm:hidden fixed top-6 right-6 w-12 h-12 bg-black/40 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-center z-[999999] cursor-pointer touch-manipulation shadow-lg transition-all hover:bg-black/60"
@@ -39,26 +39,33 @@ export default function LandingPage() {
       {/* ====================================================== */}
       {isMobileMenuOpen && (
         <div className="sm:hidden fixed top-[85px] right-6 w-[180px] bg-black/70 backdrop-blur-lg flex flex-col z-[999999] shadow-2xl rounded-2xl border border-white/10 overflow-hidden py-2 animate-in fade-in duration-200">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Beranda
           </Link>
-          <Link 
-            href="/tentang" 
+          <Link
+            href="/tentang"
             className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Tentang
           </Link>
-          <Link 
-            href="/armada" 
+          <Link
+            href="/layanan"
             className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Layanan
+          </Link>
+          <Link
+            href="/kontak"
+            className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Kontak Kami
           </Link>
         </div>
       )}
@@ -85,7 +92,8 @@ export default function LandingPage() {
         <div className="hidden sm:flex items-center gap-8 text-sm font-medium pointer-events-auto">
           <Link href="/" className="hover:text-[#2eb886] transition border-b-2 border-[#2eb886] pb-1">Beranda</Link>
           <Link href="/tentang" className="hover:text-[#2eb886] transition">Tentang</Link>
-          <Link href="/armada" className="hover:text-[#2eb886] transition">Layanan</Link>
+          <Link href="/layanan" className="hover:text-[#2eb886] transition">Layanan</Link>
+          <Link href="/kontak" className="hover:text-[#2eb886] transition">Kontak Kami</Link>
         </div>
 
       </nav>
@@ -152,7 +160,7 @@ export default function LandingPage() {
               icon: Truck,
               title: "Layanan",
               desc: "Apa aja sih yang dimiliki LKI? Klik disini untuk mengetahui Fasilitas milik sendiri yang siap didatangkan ke lokasi acara Anda.",
-              link: "/armada"
+              link: "/layanan"
             },
           ].map((service, idx) => {
             if (service.link) {
@@ -180,20 +188,32 @@ export default function LandingPage() {
       </section>
 
       {/* TENTANG KAMI */}
-      <section className="relative py-16 md:py-24 px-6 md:px-16 bg-[#111] text-white flex flex-col md:flex-row items-center justify-between overflow-hidden">
+      <section className="relative py-16 md:py-24 px-6 md:px-16 bg-[#2eb886] text-gray-900 flex flex-col md:flex-row items-center justify-between overflow-hidden">
+
+        {/* Kolom Kiri: Teks */}
         <div className="md:w-1/2 relative z-10 mb-10 md:mb-0 pr-0 md:pr-12 text-center md:text-left">
-          <p className="text-[#2eb886] font-semibold tracking-widest text-xs md:text-sm mb-3 md:mb-4">TENTANG KAMI</p>
-          <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 leading-snug">
-            LKI Production<br />Lebih dari Sekadar Produksi
+          <p className="text-black/80 font-bold tracking-widest text-xs md:text-sm mb-3 md:mb-4">
+            TENTANG KAMI
+          </p>
+          <h2 className="text-2xl md:text-4xl font-black text-black mb-4 md:mb-6 leading-snug">
+            One Stop Servive<br />For Event Support
           </h2>
-          <p className="text-gray-400 text-sm md:text-base mb-6 md:mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
+          <p className="text-gray-900 text-sm md:text-base mb-6 md:mb-8 leading-relaxed max-w-lg mx-auto md:mx-0 font-medium">
             Kami adalah tim kreatif yang berkomitmen untuk menghasilkan karya visual berkualitas, dengan pendekatan profesional, fleksibel, dan penuh ide segar. Setiap proyek adalah cerita yang kami bangun bersama klien, dari awal hingga hasil akhir.
           </p>
-          <button className="border border-white hover:bg-white hover:text-black text-white px-6 py-2.5 rounded-full font-medium flex items-center gap-2 transition mx-auto md:mx-0 w-fit">
-            Kenali Kami <ArrowRight size={18} />
-          </button>
+
+          {/* Tombol Kenali Kami (Warna Hitam Solid agar Kontras di Latar Hijau) */}
+          <Link
+            href="/tentang"
+            className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-all duration-300 group shadow-lg font-semibold"
+          >
+            <span>Kenali Kami</span>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </Link>
         </div>
-        <div className="w-full md:w-1/2 h-[250px] md:h-[400px] relative rounded-xl overflow-hidden mt-8 md:mt-0">
+
+        {/* Kolom Kanan: Gambar Gudang */}
+        <div className="w-full md:w-1/2 h-[250px] md:h-[400px] relative rounded-xl overflow-hidden mt-8 md:mt-0 shadow-2xl border border-black/10">
           <Image
             src="/assets/gudang.png"
             alt="Fasilitas LKI Production"
@@ -201,13 +221,14 @@ export default function LandingPage() {
             className="object-cover"
           />
         </div>
+
       </section>
 
       {/* ====================================================== */}
       {/* GOOGLE MAPS / LOKASI KAMI */}
       {/* ====================================================== */}
       <section className="py-16 md:py-24 px-6 md:px-16 bg-white flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16 max-w-7xl mx-auto">
-        
+
         {/* Bagian Kiri: Teks & Deskripsi */}
         <div className="w-full md:w-1/2 text-center md:text-left">
           <p className="text-[#2eb886] font-semibold tracking-widest text-xs md:text-sm mb-2 md:mb-4">LOKASI KAMI</p>
@@ -215,11 +236,11 @@ export default function LandingPage() {
           <p className="text-gray-500 text-sm md:text-base mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
             Silakan datang langsung ke lokasi kami di Jl. Sebeng No.1945, Jugo, Kesamben, Blitar untuk melihat peralatan dan berkonsultasi mengenai event Anda. Kami selalu siap menyambut kedatangan Anda!
           </p>
-          
+
           {/* Tambahan Tombol Arahkan ke Aplikasi G-Maps */}
-          <a 
-            href="https://maps.app.goo.gl/UBaekkn2udkQJT3N6?g_st=ic" 
-            target="_blank" 
+          <a
+            href="https://maps.app.goo.gl/UBaekkn2udkQJT3N6?g_st=ic"
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-[#2eb886] hover:bg-[#24966d] text-white px-8 py-3 rounded-full font-medium transition cursor-pointer"
           >
@@ -229,13 +250,13 @@ export default function LandingPage() {
 
         {/* Bagian Kanan: Container Map */}
         <div className="w-full md:w-1/2 h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50 relative">
-          <iframe 
-            src="https://maps.google.com/maps?q=LKI%20PRODUCTION,%20Jl.%20Sebeng%20No.1945,%20Jugo,%20Kesamben,%20Blitar&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen={true} 
-            loading="lazy" 
+          <iframe
+            src="https://maps.google.com/maps?q=LKI%20PRODUCTION,%20Jl.%20Sebeng%20No.1945,%20Jugo,%20Kesamben,%20Blitar&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             className="absolute top-0 left-0 w-full h-full"
           ></iframe>
@@ -247,7 +268,7 @@ export default function LandingPage() {
         <p className="text-[#2eb886] font-semibold tracking-widest text-xs md:text-sm mb-2 md:mb-4">SOSIALMEDIA</p>
         <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Karya Kami</h2>
         <p className="text-gray-500 text-sm md:text-base mb-10 md:mb-12">
-            Kenali kami dan lihat karya kami.
+          Kenali kami dan lihat karya kami.
         </p>
 
         {/* 
@@ -325,7 +346,7 @@ export default function LandingPage() {
             href="https://wa.me/62812233777?text=Halo%20LKI%20Production,%20saya%20tertarik%20untuk%20meyewa%20LKI%20Production."
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#2eb886] hover:bg-[#24966d] text-white px-8 py-3 rounded-full font-medium flex items-center gap-3 transition cursor-pointer"
+            className="bg-[#2eb886] hover:bg-[#2eb886] text-white px-8 py-3 rounded-full font-medium flex items-center gap-3 transition cursor-pointer"
           >
             <Image
               src="/assets/wa-putih.png"
