@@ -11,7 +11,7 @@ export default function TentangPage() {
   return (
     <main className="relative min-h-screen bg-white font-sans text-gray-900">
       
-{/* ====================================================== */}
+      {/* ====================================================== */}
       {/* 1. TOMBOL HAMBURGER VIP (Desain Bulat Elegan) */}
       {/* ====================================================== */}
       <button 
@@ -46,11 +46,18 @@ export default function TentangPage() {
             Tentang
           </Link>
           <Link 
-            href="/armada" 
+            href="/layanan" 
             className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Layanan
+          </Link>
+          <Link 
+            href="/kontak" 
+            className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Kontak Kami
           </Link>
         </div>
       )}
@@ -73,84 +80,74 @@ export default function TentangPage() {
         
         <div className="hidden md:flex items-center gap-8 text-sm font-medium pointer-events-auto">
           <Link href="/" className="hover:text-[#2eb886] transition">Beranda</Link>
-          {/* Menu aktif diberi garis bawah */}
           <Link href="/tentang" className="hover:text-[#2eb886] transition border-b-2 border-[#2eb886] pb-1">Tentang</Link>
-          <Link href="/armada" className="hover:text-[#2eb886] transition">Layanan</Link>
+          <Link href="/layanan" className="hover:text-[#2eb886] transition">Layanan</Link>
+          <Link href="/kontak" className="hover:text-[#2eb886] transition">Kontak Kami</Link>
         </div>
         
       </nav>
 
-      {/* HEADER TENTANG - OPSI 2: LAYOUT KIRI (TEKS) - KANAN (VIDEO) */}
-      <section className="relative pt-32 pb-16 md:pt-48 md:pb-24 px-6 md:px-16 bg-black overflow-hidden flex items-center min-h-[60vh]">
-        {/* Latar Belakang Abstrak Halus */}
-        <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-gradient-to-bl from-[#2eb886]/10 to-transparent z-0 pointer-events-none" />
+      {/* ====================================================== */}
+      {/* HERO SECTION DENGAN VIDEO BACKGROUND */}
+      {/* ====================================================== */}
+      <section className="relative min-h-[85vh] md:min-h-screen flex items-center pt-32 pb-16 px-6 md:px-16 overflow-hidden bg-black">
         
-        <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-          
-          {/* Bagian Kiri: Judul Besar */}
-          <div className="w-full md:w-1/2 text-center md:text-left text-white">
-            <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full mb-6">
-              <span className="text-[#2eb886] font-medium text-xs md:text-sm tracking-wider uppercase">Tentang LKI Production</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1]">
-              Panggung Anda, <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Tanggung Jawab Kami.</span>
-            </h1>
-            <p className="text-gray-400 text-base md:text-lg max-w-lg mx-auto md:mx-0 leading-relaxed">
-              Kami menggabungkan teknologi mutakhir, tim profesional, dan eksekusi presisi untuk memastikan acara Anda berjalan sempurna tanpa cela.
-            </p>
-          </div>
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video 
+            src="/assets/LKI Production - Logo Reveal.mp4" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="w-full h-full object-cover opacity-60"
+          />
+          {/* Overlay Gradient Gelap agar Teks Tetap Terbaca Jelas */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
+        </div>
 
-          {/* Bagian Kanan: Video Animasi Logo */}
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-            <div className="relative w-full max-w-[500px] flex items-center justify-center">
-              <video 
-                src="/assets/motionpro.mp4" 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                // Tambahkan mix-blend-screen jika background asli videomu berwarna hitam pekat, 
-                // agar background hitamnya tembus pandang dan menyatu sempurna dengan website.
-                className="w-full h-auto object-contain drop-shadow-2xl mix-blend-screen"
-              />
-            </div>
+        {/* Content */}
+        <div className="relative z-20 w-full max-w-7xl mx-auto text-left text-white mt-12 md:mt-0">
+          <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full mb-6">
+            <span className="text-[#2eb886] font-medium text-xs md:text-sm tracking-wider uppercase">Tentang LKI Production</span>
           </div>
-          
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1]">
+            One Stop Service <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">For Event Support.</span>
+          </h1>
+          <p className="text-gray-300 text-base md:text-lg max-w-xl leading-relaxed">
+            Kami menggabungkan teknologi mutakhir, tim profesional, dan eksekusi presisi untuk memastikan acara Anda berjalan sempurna tanpa cela.
+          </p>
         </div>
       </section>
 
       {/* DESKRIPSI UTAMA */}
       <section className="py-16 md:py-24 px-6 md:px-16 max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center">
         
-        {/* Bagian Gambar Kiri (Tersusun Atas-Bawah Sejajar) */}
+        {/* Bagian Gambar Kiri */}
         <div className="w-full md:w-1/2 flex flex-col gap-4 md:gap-6">
-          
-          {/* Gambar Atas: halaman.png */}
           <div className="w-full h-[200px] md:h-[260px] relative rounded-2xl overflow-hidden shadow-md">
             <Image 
-              src="/assets/halaman.png" 
+              src="/assets/loading/IMG_1081.png" 
               alt="Halaman Depan LKI Production" 
               fill
               className="object-cover" 
             />
           </div>
 
-          {/* Gambar Bawah: gudang.png */}
           <div className="w-full h-[200px] md:h-[260px] relative rounded-2xl overflow-hidden shadow-md">
             <Image 
-              src="/assets/gudang.png" 
+              src="/assets/loading/IMG_1070.png" 
               alt="Fasilitas Dalam LKI Production" 
               fill
               className="object-cover" 
             />
           </div>
-          
         </div>
 
         {/* Bagian Teks Kanan */}
         <div className="w-full md:w-1/2">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">One Stop Service for Event Production</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">One Stop Service for Event Support</h2>
           <p className="text-gray-600 mb-6 leading-relaxed">
             LKI Production berdedikasi untuk menghadirkan pengalaman produksi acara dan visual terbaik. Berlokasi di Plampangan, Indonesia, kami menyediakan layanan menyeluruh untuk memastikan setiap acara dan kebutuhan kreatif Anda berjalan dengan sempurna dan berkesan.
           </p>
@@ -202,7 +199,6 @@ export default function TentangPage() {
           © 2026 LKI Production. All rights reserved.
         </div>
         <div className="flex items-center justify-center gap-5">
-          {/* Link Instagram */}
           <a 
             href="https://www.instagram.com/lki.production?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" 
             target="_blank" 
@@ -212,7 +208,6 @@ export default function TentangPage() {
             <Image src="/assets/ig-putih.png" alt="Instagram" width={20} height={20} className="object-contain" />
           </a>
 
-          {/* Link YouTube */}
           <a 
             href="https://www.youtube.com/@LKIProduction" 
             target="_blank" 
@@ -222,7 +217,6 @@ export default function TentangPage() {
             <Image src="/assets/youtube-putih.png" alt="YouTube" width={20} height={20} className="object-contain" />
           </a>
 
-          {/* Link TikTok */}
           <a 
             href="https://www.tiktok.com/@lki.production?is_from_webapp=1&sender_device=pc" 
             target="_blank" 

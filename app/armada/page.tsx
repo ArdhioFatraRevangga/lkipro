@@ -2,53 +2,41 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Menu, X, Truck, CheckCircle2 } from "lucide-react"; // Pastikan CheckCircle2 di-import
+import { Menu, X, ArrowRight, ArrowLeft, Truck, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 export default function ArmadaPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // 1. DI SINI TEMPAT KAMU MENGEDIT TEKSNYA
-  // Kamu tinggal ubah tulisan di dalam tanda kutip pada bagian "desc:"
+  // Data List Armada (Nanti fotonya bisa diganti dengan foto truk aslimu)
   const armadaList = [
-    { 
-      name: "Sound System", 
-      desc: "Paket sound system profesional dengan kualitas audio jernih...",
-      img: "/assets/gudang.png",
-      slug: "sound-system" // <--- Tambahkan ini
+    {
+      id: 1,
+      name: "Truk HDL Los bak",
+      desc: "Truk berkapasitas besar yang kerangkanya telah dimodifikasi khusus untuk menahan beban dan getaran sound system bertenaga maksimal selama rute karnaval.",
+      img: "/assets/kendaraan/HDL-lossbak.png", // Ganti dengan foto truk Fuso LKI
+      specs: ["Kapasitas Ekstra Besar", "Modifikasi Rangka Baja", "Khusus Sound FOH Parade"]
     },
-    { 
-      name: "Lighting", 
-      desc: "Sistem pencahayaan canggih untuk menciptakan atmosfer...",
-      img: "/assets/halaman.png",
-      slug: "lighting" // <--- Tambahkan ini
+    {
+      id: 2,
+      name: "Truk Engkel Double",
+      desc: "Armada serbaguna untuk mengangkut perlengkapan panggung, rigging, genset, atau lighting dengan aksesibilitas tinggi ke berbagai ukuran jalan.",
+      img: "/assets/halaman.png", // Ganti dengan foto truk Engkel LKI
+      specs: ["Akses Rute Fleksibel", "Suspensi Ekstra Kuat", "Kapasitas Medium-High"]
     },
-    { 
-      name: "LED Video Tron", 
-      desc: "Layar LED Videotron beresolusi tinggi...",
-      img: "/assets/gudang.png",
-      slug: "video-tron" // <--- Tambahkan ini
-    },
-    // { 
-    //   name: "Truk Box Fuso (Kapasitas Besar)", 
-    //   desc: "Armada utama untuk pengiriman logistik berat...",
-    //   img: "/assets/halaman.png",
-    //   slug: "truk-box" // <--- Tambahkan ini
-    // },
-    { 
-      name: "Reaging / Stage Alumunium", 
-      desc: "Panggung",
-      img: "/assets/halaman.png",
-      slug: "truk-box" // <--- Tambahkan ini
-    },
+    {
+      id: 3,
+      name: "Grandmax#13",
+      desc: "Kendaraan taktis untuk mobilitas kru, logistik ringan, atau peralatan pendukung seperti perkabelan yang membutuhkan pergerakan cepat dan lincah.",
+      img: "/assets/kendaraan/grandmax13.png", // Ganti dengan foto Pick Up LKI
+      specs: ["Pergerakan Lincah & Cepat", "Mobilitas Kru Teknis", "Logistik Ringan & Kabel"]
+    }
   ];
 
   return (
-    <main className="relative min-h-screen bg-[#f8f9fa] font-sans text-gray-900 pb-20">
+    <main className="relative min-h-screen bg-gray-50 font-sans text-gray-900 flex flex-col">
       
-{/* ====================================================== */}
-      {/* 1. TOMBOL HAMBURGER VIP (Desain Bulat Elegan) */}
-      {/* ====================================================== */}
+      {/* TOMBOL HAMBURGER MOBILE */}
       <button 
         type="button"
         onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -61,109 +49,118 @@ export default function ArmadaPage() {
         )}
       </button>
 
-      {/* ====================================================== */}
-      {/* 2. MENU DROPDOWN (Desain Glassmorphism Modern) */}
-      {/* ====================================================== */}
+      {/* DROPDOWN MENU MOBILE (Carnaval disembunyikan sesuai kesepakatan) */}
       {isMobileMenuOpen && (
         <div className="sm:hidden fixed top-[85px] right-6 w-[180px] bg-black/70 backdrop-blur-lg flex flex-col z-[999999] shadow-2xl rounded-2xl border border-white/10 overflow-hidden py-2 animate-in fade-in duration-200">
-          <Link 
-            href="/" 
-            className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Beranda
-          </Link>
-          <Link 
-            href="/tentang" 
-            className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Tentang
-          </Link>
-          <Link 
-            href="/armada" 
-            className="py-3 px-6 text-left text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Armada
-          </Link>
+          <Link href="/" className="py-3 px-6 text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all">Beranda</Link>
+          <Link href="/tentang" className="py-3 px-6 text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all">Tentang</Link>
+          <Link href="/layanan" className="py-3 px-6 text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all">Layanan</Link>
+          <Link href="/kontak" className="py-3 px-6 text-white text-base font-medium hover:bg-white/10 hover:text-[#2eb886] transition-all">Kontak Kami</Link>
         </div>
       )}
 
-      {/* ====================================================== */}
-      {/* NAVBAR UTAMA */}
-      {/* ====================================================== */}
+      {/* NAVBAR UTAMA DESKTOP */}
       <nav className="absolute top-0 left-0 w-full z-[100] px-6 md:px-16 py-6 text-white bg-gradient-to-b from-black/80 to-transparent flex items-center justify-between pointer-events-none">
         <Link href="/" className="flex items-center pointer-events-auto">
           <Image src="/assets/LOGO LKI PRO FORMAL-02.png" alt="LKI Production Logo" width={220} height={50} className="w-40 md:w-56 h-auto object-contain" priority />
         </Link>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium pointer-events-auto">
+        <div className="hidden sm:flex items-center gap-8 text-sm font-medium pointer-events-auto">
           <Link href="/" className="hover:text-[#2eb886] transition">Beranda</Link>
           <Link href="/tentang" className="hover:text-[#2eb886] transition">Tentang</Link>
-          <Link href="/armada" className="hover:text-[#2eb886] transition border-b-2 border-[#2eb886] pb-1">Layanan</Link>
+          <Link href="/layanan" className="hover:text-[#2eb886] transition">Layanan</Link>
+          <Link href="/kontak" className="hover:text-[#2eb886] transition">Kontak Kami</Link>
         </div>
       </nav>
 
-      {/* HEADER ARMADA */}
-      <section className="relative pt-32 pb-12 md:pt-40 md:pb-20 px-6 md:px-16 text-center bg-black">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1712] to-black opacity-80" />
-        </div>
-        <div className="relative z-20 text-white max-w-3xl mx-auto mt-4">
-          <Truck className="w-16 h-16 text-[#2eb886] mx-auto mb-6" strokeWidth={1.5} />
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">Layanan Booking & Event</h1>
-          <p className="text-gray-300 text-base md:text-lg">Katalog lengkap perlengkapan event dan logistik LKI Production.</p>
-        </div>
-      </section>
+      <div className="flex-grow">
+        
+        {/* HEADER ARMADA */}
+        <section className="relative pt-32 pb-12 md:pt-48 md:pb-24 px-6 md:px-16 text-center overflow-hidden bg-[#0f2820]">
+          <div className="relative z-20 text-white max-w-3xl mx-auto">
+            <div className="w-20 h-20 bg-[#2eb886]/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-[#2eb886]/30">
+              <Truck className="w-10 h-10 text-[#2eb886]" strokeWidth={1.5} />
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+              Katalog Armada LKI
+            </h1>
+            <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+              Armada logistik terawat yang siap mengawal kemeriahan acara jalanan, parade, dan distribusi perlengkapan event Anda dengan aman dan tepat waktu.
+            </p>
+          </div>
+        </section>
 
-      {/* ====================================================== */}
-      {/* KATALOG ZIG-ZAG DENGAN TEKS DESKRIPSI */}
-      {/* ====================================================== */}
-      <section className="py-16 md:py-20 px-6 md:px-16">
-        <div className="max-w-5xl mx-auto flex flex-col gap-10">
-          {armadaList.map((item, idx) => {
-            const isEven = idx % 2 === 0;
+        {/* DAFTAR ARMADA (GRID) */}
+        <section className="py-12 md:py-16 px-6 md:px-16 max-w-7xl mx-auto w-full">
+          
+          {/* Tombol Kembali tepat di atas kartu/foto truk */}
+          <div className="mb-8">
+            <Link 
+              href="/carnaval" 
+              className="inline-flex items-center text-gray-600 hover:text-[#2eb886] transition-colors font-medium text-sm md:text-base"
+            >
+              <ArrowLeft size={20} className="mr-2" />
+              Kembali ke Halaman Carnaval
+            </Link>
+          </div>
 
-            return (
-              <Link 
-    href={`/armada/${item.slug}`} 
-    key={idx} 
-    className={`flex flex-col md:flex-row items-center bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.06)] p-6 md:p-8 w-full gap-8 md:gap-12 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300 cursor-pointer ${
-      isEven ? "md:flex-row" : "md:flex-row-reverse"
-    }`}
-  >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+            {armadaList.map((item) => (
+              <div key={item.id} className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
                 
-                {/* Kotak Gambar */}
-                <div className="w-full md:w-[350px] h-[220px] bg-gray-100 rounded-lg relative overflow-hidden shrink-0 shadow-sm">
+                {/* Foto Truk */}
+                <div className="relative w-full h-60 md:h-72 overflow-hidden bg-gray-100">
                   <Image 
                     src={item.img} 
                     alt={item.name} 
                     fill 
-                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700" 
                   />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
                 </div>
-
-                {/* Area Teks (Judul, Deskripsi, Status) */}
-                <div className="flex-1 flex flex-col justify-center text-center md:text-left">
-                  <h2 className="text-2xl md:text-3xl font-bold text-black mb-3">
-                    {item.name}
-                  </h2>
-                  <p className="text-gray-600 mb-5 leading-relaxed text-sm md:text-base">
-                    {item.desc}
-                  </p>
+                
+                {/* Detail Armada */}
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-[#2eb886] transition-colors">{item.name}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">{item.desc}</p>
                   
-                  {/* 2. TEKS "Tersedia & Siap Operasi" ADA DI SINI
-                  <div className="flex items-center justify-center md:justify-start gap-2 text-[#2eb886] font-medium">
-                    <CheckCircle2 size={20} />
-                    <span>Tersedia & Siap Operasi</span>
-                  </div> */}
+                  {/* Spesifikasi List */}
+                  <div className="space-y-3 border-t border-gray-100 pt-6">
+                    {item.specs.map((spec, idx) => (
+                      <div key={idx} className="flex items-center gap-3">
+                        <CheckCircle2 className="text-[#2eb886] shrink-0" size={18} />
+                        <span className="text-sm font-medium text-gray-700">{spec}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
 
-              </Link>
-            );
-          })}
+      {/* FOOTER */}
+      <footer className="w-full bg-[#111] text-gray-400 py-8 px-6 md:px-16 flex flex-col md:flex-row items-center justify-between border-t border-white/10 text-center md:text-left mt-auto">
+        <div className="mb-4 md:mb-0">
+          <Link href="/" className="inline-block">
+            <Image src="/assets/LOGO LKI PRO FORMAL-02.png" alt="LKI Production Logo" width={200} height={45} className="w-36 md:w-48 h-auto object-contain" />
+          </Link>
         </div>
-      </section>
+        <div className="text-xs md:text-sm mb-4 md:mb-0">
+          © 2026 LKI Production. All rights reserved.
+        </div>
+        <div className="flex items-center justify-center gap-5">
+          <a href="https://www.instagram.com/lki.production?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition">
+            <Image src="/assets/ig-putih.png" alt="Instagram" width={20} height={20} className="object-contain" />
+          </a>
+          <a href="https://www.youtube.com/@LKIProduction" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition">
+            <Image src="/assets/youtube-putih.png" alt="YouTube" width={20} height={20} className="object-contain" />
+          </a>
+          <a href="https://www.tiktok.com/@lki.production?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition">
+            <Image src="/assets/tiktok-putih.png" alt="TikTok" width={20} height={20} className="object-contain" />
+          </a>
+        </div>
+      </footer>
 
     </main>
   );
