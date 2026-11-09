@@ -34,19 +34,19 @@ export const armadaDetails: Record<string, { name: string; desc: string; gallery
 
       // Nanti kalau foto aslinya sudah ada, tinggal ganti img, title, dan spesifikasinya
       // FOH MOH
-      { id: "Allen & Heath C3500", img: "/assets/sound-system/audio-system-FOH-MOH/Allen & Heath C3500.png", title: "Allen & Heath C3500", specs: ["Layar: 2x layar sentuh kapasitif 12 inci dengan antarmuka Harmony UI", "Fader & Kontrol: 24 fader fisik dengan 6 layer", "Antarmuka Tampilan: Sppl/Scribble strip virtual untuk nama dan warna kanal yang dapat dikustomisasi."], category: "Audio System FOH & MOH" },
+      { id: "Allen & Heath C3500", img: "/assets/sound-system/audio-system-FOH-MOH/Allen & Heath C3500.png", title: "Allen & Heath C3500 (Mixer)", specs: ["Layar: 2x layar sentuh kapasitif 12 inci dengan antarmuka Harmony UI", "Fader & Kontrol: 24 fader fisik dengan 6 layer", "Antarmuka Tampilan: Sppl/Scribble strip virtual untuk nama dan warna kanal yang dapat dikustomisasi."], category: "Audio System FOH & MOH" },
+      { id: "Behringer Wing Compact", img: "/assets/sound-system/audio-system-FOH-MOH/Behringer Wing Compact.png", title: "Behringer Wing Compact (Mixer)", specs: ["Saluran & Bus: 48 Flex Channels, 28 Stereo Buses", "Preamp & I/O: 24 MIDAS PRO Mic Preamps, 8 MIDAS PRO XLR Outputs", "Layar & Kontrol: Layar sentuh kapasitif 10,1 inci (10.1-inch touchscreen) dan 13 fader bermotor 100 mm (motorized fader)", "Efek & Mesin: 16 Stereo FX Engines"], category: "Audio System FOH & MOH" },
+      { id: "MIDAS HD96", img: "/assets/sound-system/audio-system-FOH-MOH/MIDAS HD96 .png", title: "MIDAS HD96 (Mixer)", specs: ["Kanal Input: Hingga 144 simultaneous input channels", "Mix Buses: 123 time-aligned dan phase-coherent mix buses", "Layar (Touchscreen): Layar sentuh kapasitif 21 inci (multi-touch hingga 10 sentuhan simultan pada versi konsol fisik)"], category: "Audio System FOH & MOH" },
+      { id: "MIDAS M32 Live", img: "/assets/sound-system/audio-system-FOH-MOH/MIDAS M32 .png", title: "MIDAS M32 Live (Mixer)", specs: ["Channel Input: 40 saluran input simultan (32 preamp mikrofon Midas PRO)", "Mix Bus: 25 mix bus (termasuk 16 aux bus, 6 matrix bus, dan 1 main (LCR)", "Fader: 25 fader motorized 100mm berteknologi Midas PRO", "Phantom Power: +48V dapat dialihkan per input", "Scene Memory: 100 scenes recall"], category: "Audio System FOH & MOH" },
+      { id: "MIDAS M32R", img: "/assets/sound-system/audio-system-FOH-MOH/MIDAS M32R .png", title: "MIDAS M32R (Mixer)", specs: ["Channel & Input/Output: 40 channel input simultan, 16 preamp mic Midas PRO, 25 mix bus", "Fader & Kontrol: 17 fader motorisasi 100mm (16 channel + 1 master), Layar TFT 5 inci di panel atas", "DSP & Prosesing: 40-bit floating point DSP, Konverter ADC/DAC 192 kHz, 8 efek stereo internal (atau 16 mono)"], category: "Audio System FOH & MOH" },
+      { id: "Yamaha DM3", img: "/assets/sound-system/audio-system-FOH-MOH/Yamaha DM3.png", title: "Yamaha DM3 (Mixer)", specs: ["Kapasitas Channel: 22 channel (16 mono, 1 stereo, 2 FX return)", "Bus: 6 Mix, 2 Matrix, 2 FX, 1 Stereo, 1 Cue", "Input Analog: 16 Mic/Line (12 XLR + 4 XLR/TRS Combo)", "Layar Sentuh: 9 inci multi-touch", "Sampling Rate: 48 kHz / 96 kHz"], category: "Audio System FOH & MOH" },
+      { id: "Yamaha DM7", img: "/assets/sound-system/audio-system-FOH-MOH/Yamaha DM7.png", title: "Yamaha DM7 (Mixer)", specs: ["Input Channels: 120 channel mono", "Buses: 48 Mix, 12 Matrix, 2 Stereo, 1 Mono, dan 2 Cue buses", "Layar (Display): 2 layar multi-touch 12.1 inci + 1 layar 7 inci"], category: "Audio System FOH & MOH" },
       { id: "Allen & Heath DL CDM64", img: "/assets/sound-system/audio-system-FOH-MOH/Allen & Heath DL CDM64.png", title: "Allen & Heath DL CDM64", specs: ["Mic/Line Inputs: 64 analog (XLR)", "Line Outputs: 32 analog (XLR)", "Total Input Channels: 128 input channels dengan pemrosesan penuh", "Mix Outputs: 64 mix outputs"], category: "Audio System FOH & MOH" },
-      { id: "Behringer Wing Compact", img: "/assets/sound-system/audio-system-FOH-MOH/Behringer Wing Compact.png", title: "Behringer Wing Compact", specs: ["Saluran & Bus: 48 Flex Channels, 28 Stereo Buses", "Preamp & I/O: 24 MIDAS PRO Mic Preamps, 8 MIDAS PRO XLR Outputs", "Layar & Kontrol: Layar sentuh kapasitif 10,1 inci (10.1-inch touchscreen) dan 13 fader bermotor 100 mm (motorized fader)", "Efek & Mesin: 16 Stereo FX Engines"], category: "Audio System FOH & MOH" },
       { id: "MIDAS DL 32", img: "/assets/sound-system/audio-system-FOH-MOH/MIDAS DL 32.png", title: "MIDAS DL 32", specs: ["Tipe Perangkat: Digital Stage Box", "Konektivitas Jaringan AES50: Dual AES50 SuperMAC ports (Koneksi hingga 100 meter menggunakan kabel Cat-5e yang terlindung / shielded)", "Mic Preamp: 32 buah preamplifier mikrofon kelas dunia Midas PRO yang dapat Midas PRO yang dapat dikontrol dari jarak jauh"], category: "Audio System FOH & MOH" },
       { id: "MIDAS DL 231", img: "/assets/sound-system/audio-system-FOH-MOH/MIDAS DL 231.png", title: "MIDAS DL 231", specs: ["Jenis Perangkat: 24-Input, 24-Output Active Microphone Splitter", "Analog input mic/line: Gain -2.5 dB s.d. +45 dB (max +24 dBu)", "Layar LCD konfigurasi dan indikator LED status PSU/phantom power"], category: "Audio System FOH & MOH" },
       { id: "MIDAS DL 251", img: "/assets/sound-system/audio-system-FOH-MOH/MIDAS DL 251.png", title: "MIDAS DL 251", specs: ["Konfigurasi I/O: 48 mic/line input", "reamp & Gain: Rentang gain -2,5 dB hingga +45 dB dengan kelipatan 2,5 dB", "Jarak kendali hingga 100 meter melalui kabel CAT5/CAT5e."], category: "Audio System FOH & MOH" },
-      { id: "MIDAS HD96", img: "/assets/sound-system/audio-system-FOH-MOH/MIDAS HD96 .png", title: "MIDAS HD96", specs: ["Kanal Input: Hingga 144 simultaneous input channels", "Mix Buses: 123 time-aligned dan phase-coherent mix buses", "Layar (Touchscreen): Layar sentuh kapasitif 21 inci (multi-touch hingga 10 sentuhan simultan pada versi konsol fisik)"], category: "Audio System FOH & MOH" },
-      { id: "MIDAS M32", img: "/assets/sound-system/audio-system-FOH-MOH/MIDAS M32 .png", title: "MIDAS M32", specs: ["Channel Input: 40 saluran input simultan (32 preamp mikrofon Midas PRO)", "Mix Bus: 25 mix bus (termasuk 16 aux bus, 6 matrix bus, dan 1 main (LCR)", "Fader: 25 fader motorized 100mm berteknologi Midas PRO", "Phantom Power: +48V dapat dialihkan per input", "Scene Memory: 100 scenes recall"], category: "Audio System FOH & MOH" },
-      { id: "MIDAS M32R", img: "/assets/sound-system/audio-system-FOH-MOH/MIDAS M32R .png", title: "MIDAS M32R", specs: ["Channel & Input/Output: 40 channel input simultan, 16 preamp mic Midas PRO, 25 mix bus", "Fader & Kontrol: 17 fader motorisasi 100mm (16 channel + 1 master), Layar TFT 5 inci di panel atas", "DSP & Prosesing: 40-bit floating point DSP, Konverter ADC/DAC 192 kHz, 8 efek stereo internal (atau 16 mono)"], category: "Audio System FOH & MOH" },
       { id: "Relacart IEM Sistem 320 + TA C4", img: "/assets/sound-system/audio-system-FOH-MOH/Relacart IEM Sistem 320 + TA C4.png", title: "Relacart IEM Sistem 320 + TA C4", specs: ["Rentang Frekuensi UHF: 470 MHz – 936 MHz", "Switching Bandwidth: 32 MHz.", "Ketersediaan Frekuensi: Hingga 1.280 frekuensi yang dapat disesuaikan (317 presetsaluran dalam 20 grup)."], category: "Audio System FOH & MOH" },
       { id: "RIO DL 3224 DM7", img: "/assets/sound-system/audio-system-FOH-MOH/RIO DL 3224 DM7.png", title: "RIO DL 3224 DM7", specs: ["Analog Input: 32 Channel (Mic/Line XLR dengan Head Amp internal yang bisa dikontrol langsung dari DM7).", "Analog Output: 16 Channel (XLR).", "Digital Output: 8 Channel (4 pasang AES/EBU XLR).", "Dukungan Sampling Rate: 44.1 kHz, 48 kHz, 88.2 kHz, dan 96 kHz"], category: "Audio System FOH & MOH" },
-      { id: "Yamaha DM3", img: "/assets/sound-system/audio-system-FOH-MOH/Yamaha DM3.png", title: "Yamaha DM3", specs: ["Kapasitas Channel: 22 channel (16 mono, 1 stereo, 2 FX return)", "Bus: 6 Mix, 2 Matrix, 2 FX, 1 Stereo, 1 Cue", "Input Analog: 16 Mic/Line (12 XLR + 4 XLR/TRS Combo)", "Layar Sentuh: 9 inci multi-touch", "Sampling Rate: 48 kHz / 96 kHz"], category: "Audio System FOH & MOH" },
-      { id: "Yamaha DM7", img: "/assets/sound-system/audio-system-FOH-MOH/Yamaha DM7.png", title: "Yamaha DM7", specs: ["Input Channels: 120 channel mono", "Buses: 48 Mix, 12 Matrix, 2 Stereo, 1 Mono, dan 2 Cue buses", "Layar (Display): 2 layar multi-touch 12.1 inci + 1 layar 7 inci"], category: "Audio System FOH & MOH" },
 
       // MICROPHONE SISTEM 
       { id: "QLXD-4U Wireless", img: "/assets/sound-system/microphone-system/QLXD-4U Wireless.png", title: "QLXD-4U Wireless", specs: ["Jenis Microphone: Professional Wireless Microphone dengan 2 buah mic genggam", "Jarak Jangkauan: Sinyal kuat dengan jangkauan maksimal berkisar hingga 100 meter", "Frekuensi: Frekuensi UHF (dapat diubah-ubah / multi-channel)."], category: "Microphone Sistem" },
@@ -116,24 +116,30 @@ export const armadaDetails: Record<string, { name: string; desc: string; gallery
     name: "LED Video Tron",
     desc: "Galeri detail layar LED resolusi tinggi kami.",
     gallery: [
-      { id: "led-outdoor", img: "/assets/videotron1.png", title: "LED Screen P3.9 Outdoor", specs: ["Tahan air & cuaca (IP65)", "Tingkat kecerahan 5000 nits", "Ukuran custom per panel"] },
-      { id: "led-indoor", img: "/assets/videotron2.png", title: "LED Screen P2.5 Indoor", specs: ["Resolusi ultra HD", "Refresh rate 3840Hz (anti-flicker)", "Warna sangat natural"] },
-      { id: "video-processor", img: "/assets/videotron3.png", title: "Video Processor", specs: ["Mendukung input 4K", "Transisi seamless", "Bisa multiple layer"] },
-      { id: "rigging-fiber", img: "/assets/videotron4.png", title: "Kabel Fiber Optik & Rigging", specs: ["Transmisi data zero-delay", "Struktur rigging aluminium", "Aman dan kokoh"] }
+      { id: "LED", img: "/assets/loading/IMG_1081.png", title: "Video tron transparan", specs: [""] },
+      { id: "LED", img: "/assets/loading/IMG_1070.png", title: "Video tron transparan", specs: [""] },
+      { id: "LED", img: "/assets/videotron3.png", title: "Video tron transparan", specs: [""] },
+      { id: "LED", img: "/assets/videotron4.png", title: "Video tron transparan", specs: [""] }
     ],
   },
 
-  
-  "rigging-stage": {
-    name: "Reagging / Stage",
-    desc: "srriittt.",
+
+  // Contoh struktur di file armada.ts
+ "rigging-stage": {
+    name: "Rigging / Stage",
+    desc: "Konstruksi panggung kokoh bersertifikasi standar keamanan tinggi. Meliputi stage rigging, dan barikade untuk acara indoor maupun outdoor.",
     gallery: [
       // RINGLOCK
-      { id: "Rigging-Ring-Lock", img: "/assets/rigging-stage/IMG_1074.png", title: "Rigging Ring-Lock", specs: ["Ring Lock"] },
+      { id: "RIG", img: "/assets/loading/IMG_1081.png", title: "ringlock-1", specs: [""], category: "RING-LOCK" },
+      { id: "RIG-1", img: "/assets/loading/IMG_1070.png", title: "ringlock-2", specs: [""], category: "RING-LOCK" },
+      { id: "RIG-2", img: "/assets/loading/loading.png", title: "ringlock-3", specs: [""], category: "RING-LOCK" },
+      { id: "RIG-3", img: "/assets/loading/IMG_1074.png", title: "ringlock-4", specs: [""], category: "RING-LOCK"},
 
       // ALUMUNIUM
-      { id: "Rigging-alumunium", img: "/assets/loading/loading.png", title: "Rigging Alumunium", specs: ["Alumunium"] },
-
-    ],
-  }
+      { id: "RIG-4", img: "/assets/loading/IMG_1081.png", title: "alumunium-1", specs: [""], category: "ALUMUNIUM"},
+      { id: "RIG-5", img: "/assets/loading/IMG_1070.png", title: "alumunium-2", specs: [""], category: "ALUMUNIUM"},
+      { id: "RIG-6", img: "/assets/loading/loading.png", title: "alumunium-3", specs: [""], category: "ALUMUNIUM" },
+      { id: "RIG-7", img: "/assets/loading/IMG_1074.png", title: "alumunium-4", specs: [""], category: "ALUMUNIUM" }
+    ]
+  },
 };
