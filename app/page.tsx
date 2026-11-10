@@ -2,12 +2,9 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { Speaker, Zap, Play, ArrowRight, Menu, Truck, X, Layers } from "lucide-react";
+import { Speaker, Zap, Play, ArrowRight, Menu, Truck, X, Layers, MessageCircle } from "lucide-react";
 import Link from "next/link";
 
-// ==========================================
-// 1. KOMPONEN ANIMASI ADVANCED (Multi-Arah)
-// ==========================================
 function FadeIn({ 
   children, 
   delay = 0, 
@@ -57,16 +54,15 @@ function FadeIn({
 
 export default function LandingPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
-
+  
+  const [currentSlide, setCurrentSlide] = useState(0);
   const slideImages = [
     "/assets/loading/IMG_1070.png", 
     "/assets/loading/IMG_1081.png",  
     "/assets/loading/IMG_1073.png"  
   ];
 
-  // Efek Slider Otomatis
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setCurrentSlide((prev) => (prev === slideImages.length - 1 ? 0 : prev + 1));
@@ -74,7 +70,6 @@ export default function LandingPage() {
     return () => clearInterval(slideInterval);
   }, [slideImages.length]);
 
-  // Efek Navbar Background saat di-scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -87,15 +82,26 @@ export default function LandingPage() {
     <main className="relative min-h-screen bg-white font-sans text-gray-900 overflow-hidden">
 
       {/* ====================================================== */}
-      {/* TOMBOL HAMBURGER VIP & MENU MOBILE */}
+      {/* NAVBAR MOBILE & TOMBOL HAMBURGER */}
       {/* ====================================================== */}
-      <button
-        type="button"
-        onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        className="sm:hidden fixed top-6 right-6 w-12 h-12 bg-black/60 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center z-[999999] shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all"
-      >
-        {isMobileMenuOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
-      </button>
+      <div className="sm:hidden fixed top-6 left-6 right-6 flex items-center justify-between z-[999999]">
+        {/* Badge Premium Event Production di Mobile (Sebelah kiri tombol hamburger) */}
+        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5 shadow-lg">
+          <span className="w-2 h-2 rounded-full bg-[#00A859] animate-pulse"></span>
+          <span className="text-[10px] font-bold tracking-wider text-[#00A859] uppercase whitespace-nowrap">
+            PREMIUM EVENT PRODUCTION
+          </span>
+        </div>
+
+        {/* Tombol Hamburger */}
+        <button
+          type="button"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          className="w-12 h-12 bg-black/60 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all shrink-0"
+        >
+          {isMobileMenuOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
+        </button>
+      </div>
 
       {isMobileMenuOpen && (
         <div className="sm:hidden fixed top-[85px] right-6 w-[200px] bg-[#0a1914]/90 backdrop-blur-2xl flex flex-col z-[999999] shadow-2xl rounded-3xl border border-white/10 overflow-hidden py-3 animate-in fade-in zoom-in-95 duration-300">
@@ -115,14 +121,19 @@ export default function LandingPage() {
         </div>
       )}
 
-      {/* ====================================================== */}
-      {/* NAVBAR UTAMA */}
-      {/* ====================================================== */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-16 py-4 md:py-6 flex items-center justify-between transition-all duration-500 ${isScrolled ? "bg-black/90 backdrop-blur-lg border-b border-white/10 shadow-lg py-4" : "bg-gradient-to-b from-black/80 to-transparent"}`}>
-        <Link href="/">
-          <Image src="/assets/LOGO LKI PRO FORMAL-02.png" alt="LKI Production Logo" width={220} height={50} className="w-36 md:w-52 h-auto object-contain" priority />
-        </Link>
-        <div className="hidden sm:flex items-center gap-10 text-sm font-medium text-white/90">
+      {/* NAVBAR DESKTOP (Badge Premium Event berada di sebelah kiri teks Beranda) */}
+      <nav className={`hidden sm:flex fixed top-0 left-0 w-full z-[100] px-16 py-6 items-center justify-between transition-all duration-500 ${isScrolled ? "bg-black/90 backdrop-blur-lg border-b border-white/10 shadow-lg py-4" : "bg-gradient-to-b from-black/80 to-transparent"}`}>
+        <div className="hidden sm:block"></div>
+
+        <div className="flex items-center gap-8 text-sm font-medium text-white/90">
+          {/* Badge Desktop di sebelah kiri Beranda */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-[#00A859] animate-pulse"></span>
+            <span className="text-xs font-bold tracking-widest text-[#00A859] uppercase whitespace-nowrap">
+              PREMIUM EVENT PRODUCTION
+            </span>
+          </div>
+
           <Link href="/" className="hover:text-[#00A651] transition border-b-2 border-[#00A651] pb-1">Beranda</Link>
           <Link href="/tentang" className="hover:text-[#00A651] transition hover:border-b-2 hover:border-[#00A651]/50 pb-1">Tentang</Link>
           <Link href="/layanan" className="hover:text-[#00A651] transition hover:border-b-2 hover:border-[#00A651]/50 pb-1">Layanan</Link>
@@ -133,52 +144,55 @@ export default function LandingPage() {
       {/* ====================================================== */}
       {/* HERO SECTION */}
       {/* ====================================================== */}
-      <section className="relative h-[90vh] md:h-screen min-h-[600px] flex items-center px-6 md:px-16 bg-black overflow-hidden">
+      <section className="relative h-[90vh] md:h-screen min-h-[600px] flex items-center px-6 md:px-20 bg-black overflow-hidden">
         
-        {/* PERUBAHAN DI SINI: Background dikembalikan ke versi transparan */}
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <Image 
             src="/assets/halaman.png" 
             alt="LKI Production Background" 
             fill 
             priority 
-            // opacity-50 dihapus agar gambar cerah kembali
-            className="object-cover scale-105 transform origin-center transition-transform duration-[20000ms] hover:scale-125" 
+            className="object-cover scale-105 transform origin-center transition-transform duration-[2000ms] hover:scale-125" 
           />
-          {/* Gradient dikembalikan ke versi original (hitam memudar ke kanan) */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/10 z-10" />
         </div>
 
-        <div className="relative z-20 max-w-3xl text-white mt-16 md:mt-0">
-          <FadeIn direction="left" delay={200}>
-            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#00A651] animate-pulse"></span>
-              <span className="text-xs font-semibold tracking-widest text-[#00A651]">PREMIUM EVENT PRODUCTION</span>
-            </div>
-          </FadeIn>
+        <div className="relative z-20 max-w-7xl w-full mx-auto flex flex-col justify-between h-full pt-32 pb-16">
           
-          <FadeIn direction="up" delay={400}>
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6 tracking-tight">
-              One Stop <br /> Service <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00A651] to-[#00A651]">For Event Support</span>
-            </h1>
-          </FadeIn>
+          {/* Logo & Teks Utama */}
+          <div className="max-w-3xl">
+            <FadeIn direction="left" delay={200}>
+              <div className="mb-6 max-w-xs md:max-w-md">
+                <Image 
+                  src="/assets/LOGO LKI PRO FORMAL-04.png" 
+                  alt="LKI Production Logo" 
+                  width={400} 
+                  height={150} 
+                  className="w-full h-auto object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]" 
+                  priority 
+                />
+              </div>
+            </FadeIn>
+          </div>
 
-          <FadeIn direction="up" delay={600}>
-            <p className="text-gray-300 text-base md:text-lg mb-10 max-w-xl leading-relaxed font-light">
-              LKI Production adalah partner kreatif Anda dalam menghadirkan visual yang berdampak dan tata suara spektakuler, dari konsep hingga eksekusi panggung.
-            </p>
-          </FadeIn>
-
-          <FadeIn direction="up" delay={800}>
-            <a href="https://wa.me/62812233777?text=Halo%20LKI%20Production,%20saya%20ingin%20tanya-tanya%20seputar%20LKI%20Production." target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center gap-3 bg-[#00A651] text-black px-8 py-4 rounded-full font-bold overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(46,184,134,0.4)]">
+          {/* Tombol Hubungi Kami: Posisi Kanan untuk Mobile & Laptop */}
+          <FadeIn direction="up" delay={600} className="w-full flex justify-end">
+            <a href="https://wa.me/62812233777?text=Halo%20LKI%20Production,%20saya%20ingin%20tanya-tanya%20seputar%20LKI%20Production." target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center gap-3 bg-[#00A859] text-white px-6 md:px-8 py-3.5 md:py-4 rounded-full font-bold overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(0,168,89,0.4)] text-sm md:text-base">
               <span className="relative z-10 flex items-center gap-2">
-                <Image src="/assets/wa-putih.png" alt="WhatsApp" width={20} height={20} className="object-contain filter invert" />
+                <Image 
+                  src="/assets/wa-putih.png" 
+                  alt="WhatsApp" 
+                  width={20} 
+                  height={20} 
+                  className="group-hover:scale-110 transition-transform object-contain" 
+                />
                 Hubungi Kami Sekarang
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#00A651] to-[#00A651] opacity-0 group-hover:opacity-100 transition-opacity z-0"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#00A859] to-[#00904d] opacity-0 group-hover:opacity-100 transition-opacity z-0"></div>
             </a>
           </FadeIn>
+
         </div>
       </section>
 
@@ -281,7 +295,7 @@ export default function LandingPage() {
       </section>
 
       {/* ====================================================== */}
-      {/* GOOGLE MAPS SECTION (DIKEMBALIKAN KE SINI) */}
+      {/* GOOGLE MAPS SECTION */}
       {/* ====================================================== */}
       <section className="py-20 md:py-32 px-6 md:px-16 bg-gray-50 border-y border-gray-200">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20 max-w-7xl mx-auto w-full">
@@ -304,7 +318,7 @@ export default function LandingPage() {
       </section>
 
       {/* ====================================================== */}
-      {/* GALERI KEGIATAN (Masonry Feel) */}
+      {/* GALERI KEGIATAN */}
       {/* ====================================================== */}
       <section className="py-20 md:py-32 px-6 md:px-16 bg-white text-center">
         <FadeIn direction="up">
